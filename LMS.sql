@@ -31,13 +31,12 @@ CREATE TABLE Category (
 );
 
 CREATE TABLE LibraryMaterial (
-    BookCode VARCHAR(20) PRIMARY KEY,
+    ISBN VARCHAR(20) PRIMARY KEY,
     BookName VARCHAR(255) NOT NULL,
     Authors VARCHAR(255),
     PublishedDate DATE,
     CategoryID INT,
     Publisher VARCHAR(100),
-    ISBN VARCHAR(20),
     Status VARCHAR(20) DEFAULT 'Available',
     FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID)
 );
@@ -45,11 +44,13 @@ CREATE TABLE LibraryMaterial (
 CREATE TABLE BorrowingList (
     BorrowID INT PRIMARY KEY AUTO_INCREMENT,
     StudentID INT,
-    BookCode VARCHAR(20),
+    ISBN VARCHAR(20),
     BorrowedDate DATE,
     ExpectedReturnDate DATE,
     ActualReturnDate DATE,
     ReturnStatus VARCHAR(20) DEFAULT 'Returned',
     FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
-    FOREIGN KEY (BookCode) REFERENCES LibraryMaterial(BookCode)
+    FOREIGN KEY (ISBN) REFERENCES LibraryMaterial(ISBN)
 );
+
+
