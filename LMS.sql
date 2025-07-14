@@ -35,10 +35,10 @@ CREATE TABLE LibraryMaterial (
     BookName VARCHAR(255) NOT NULL,
     Authors VARCHAR(255),
     PublishedDate DATE,
-    CategoryID INT,
-    Publisher VARCHAR(100),
+    CategoryName VARCHAR(100), -- replaced CategoryID
+    Publisher VARCHAR(255),
     Status VARCHAR(20) DEFAULT 'Available',
-    FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID)
+    Overview TEXT
 );
 
 CREATE TABLE BorrowingList (
@@ -52,5 +52,3 @@ CREATE TABLE BorrowingList (
     FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
     FOREIGN KEY (ISBN) REFERENCES LibraryMaterial(ISBN)
 );
-
-
